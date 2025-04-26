@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Hospitales</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1>Lista de Hospitales</h1>
+        <div th:replace="~{fragments/navbar}"></div>
+        <div>
+            <table>
+                <thead>
+                    <tr>Nombre</tr>
+                    <tr>Direccion</tr>
+                    <tr>Telefono</tr>
+                </thead>
+                <tbody th:each="hospital : ${listaHospitales}">
+                    <tr th:text="${hospital.nombre}"></tr>
+                    <tr th:text="${hospital.direccion}"></tr>
+                    <tr th:text="${hospital.telefono}"></tr>
+                    <button th:onclick="'window.location.href=\'/hospitals/' + ${hospital.id} + '/doctores\'" >Mostrar doctores</button>
+                    <button th:onclick="'window.location.href=\'/hospitals/' + ${hospital.id} + '/pacientes\'" >Mostrar pacientes</button>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
